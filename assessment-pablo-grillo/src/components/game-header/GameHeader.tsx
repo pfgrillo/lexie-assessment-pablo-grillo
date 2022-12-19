@@ -6,8 +6,7 @@ import {Element} from "../../enum";
 import {
     clearSuccessColor,
     restartGame,
-    selectClosestColor,
-    showWinningColors
+    selectClosestColor
 } from "../../features/element/elementSlice";
 import {
     selectMaxMoves,
@@ -37,19 +36,20 @@ export const GameHeader: React.FC = () => {
             dispatch(clearSuccessColor());
         }
     }
+
     useEffect(() => {
         if (closestColor.diff < 10 && closestColor.diff !== 0) {
-            dispatch(showWinningColors(closestColor));
-            const restart = confirmAlert('Success! Do you wanna play again?');
-            if (restart) {
-                dispatch(sideEffectFetchNewData());
-                dispatch(restartGame());
-                dispatch(startCounter(maxMoves));
-                dispatch(clearSuccessColor())
-            }
-
+            setTimeout(() => {
+                const restart = confirmAlert('Success! Do you wanna play again?');
+                if (restart) {
+                    dispatch(clearSuccessColor())
+                    dispatch(sideEffectFetchNewData());
+                    dispatch(restartGame());
+                    dispatch(startCounter(maxMoves));
+                }
+            }, 500)
         }
-    }, [closestColor])
+    })
 
 
     return <div className="game_header">
