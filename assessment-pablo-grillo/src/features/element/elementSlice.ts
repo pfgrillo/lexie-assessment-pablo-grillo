@@ -123,24 +123,18 @@ export const elementSlice = createSlice({
                 closestColor: resultColors.reduce((acc, curr) => Math.abs(curr.diff - 10) < Math.abs(acc.diff - 10) ? curr : acc)
             };
         },
+        clearSuccessColor: (state) => {
+            return {
+                ...state,
+                closestColor: { color: '', diff: 1000, position: 0}
+            }
+        },
         restartGame: (state) => {
             return {
                 ...state,
                 elements: [...state.elements].map((e: IElement) => {
                     return {...e, color: 'rgb(0, 0, 0)'};
                 })
-            }
-        },
-        showWinningColors: (state, closestColor: PayloadAction<any>) => {
-            return {
-                ...state,
-                closestColor: closestColor.payload
-            };
-        },
-        clearSuccessColor: (state) => {
-            return {
-                ...state,
-                closestColor: { color: '', diff: 1000, position: 0}
             }
         }
     }
@@ -153,7 +147,6 @@ export const {
     modifyRow,
     getColors,
     restartGame,
-    showWinningColors,
     clearSuccessColor
 } = elementSlice.actions;
 
