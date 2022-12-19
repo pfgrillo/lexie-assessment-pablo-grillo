@@ -1,0 +1,12 @@
+.game_header {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+.labels {
+    margin-bottom: 10px;
+}
+.color_info {
+    display: inline-flex;
+    align-items: center;
+}

@@ -1,0 +1,36 @@
+.color_alchemy {
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+.external_grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-external-columns), 24px);
+    grid-template-rows: repeat(var(--grid-external-rows), 24px);
+    grid-gap: 10px;
+    justify-items: center;
+    align-content: center;
+}
+.internal_grid {
+    grid-area: 2 / 2 / var(--grid-internal-rows) / var(--grid-external-columns);
+    display: grid;
+    grid-template-columns: repeat(var(--grid-internal-columns), 24px);
+    grid-template-rows: repeat(var(--grid-internal-rows), 24px);
+    grid-gap: 10px;
+}
+
+.element {
+    width: 24px;
+    height: 24px;
+    border: 2px solid darkgrey;
+}
+
+.pointer_cursor {
+    cursor: pointer;
+}
+.default_cursor {
+    cursor: default;
+}
+.red_border {
+    border: 2px solid red;
+}
